@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MenaVerse Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for animations and enhanced UI - Refined */
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .fade-in {
+            animation: fadeIn 1.2s ease-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .scale-up {
+            animation: scaleUp 0.5s ease-out;
+        }
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #000000, #4a5568); /* Gradient from black to gray-700 */
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .client-success-card:hover {
+            transform: scale(1.03);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* New styles for black and white theme */
+        body {
+            background-color: #f7fafc; /* Light background */
+            color: #1a202c; /* Dark text */
+        }
+        .bg-white {
+            background-color: #ffffff;
+        }
+        .text-gray-700 {
+            color: #4a5568;
+        }
+        .text-gray-600 {
+            color: #718096;
+        }
+        .text-gray-800 {
+            color: #2d3748;
+        }
+        .text-gray-900{
+            color:#1a202c;
+        }
+        .bg-gray-200 {
+            background-color: #edf2f7;
+        }
+        .bg-gray-300 {
+            background-color: #e2e8f0;
+        }
+
+        .text-black {
+            color: #000000; /* Black text */
+        }
+        .hover\:text-black:hover {
+            color: #1a202c;
+        }
+        .bg-black {
+            background-color: #000000; /* Black buttons */
+        }
+        .hover\:bg-black:hover {
+            background-color: #1a202c;
+        }
+
+        .border-gray-200 {
+            border-color: #edf2f7;
+        }
+        .divide-gray-200 {
+            border-color: #edf2f7;
+        }
+
+        .shadow-md {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+         .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+    </style>
+</head>
+<body class="bg-gray-100 font-inter">
+    <header class="bg-white shadow-md sticky top-0 z-50 rounded-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center text-xl font-semibold text-gray-900">
+                 <img src="MENAVerse.png" alt="MenaVerse Logo" class="mr-2 rounded-md" style="max-height: 50px;" />
+                <span class="text-gray-900 font-bold">MenaVerse Online</span>
+            </a>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="hover:text-black text-gray-700 transition duration-300">Home</a></li>
+                    <li><a href="#about" class="hover:text-black text-gray-700 transition duration-300">About Us</a></li>
+                    <li><a href="#services" class="hover:text-black text-gray-700 transition duration-300">Services</a></li>
+                    <li><a href="#work" class="hover:text-black text-gray-700 transition duration-300">Our Work</a></li>
+                    <li><a href="#contact" class="hover:text-black text-gray-700 transition duration-300">Contact Us</a></li>
+                    <li>
+                        <a href="#contact" class="bg-black hover:bg-gray-800 text-white px-5 py-3 rounded-full transition duration-300">
+                            Get a Quote
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <button id="hamburger-btn" class="md:hidden text-gray-700 focus:outline-none" aria-label="Toggle Navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
+        <div class="bg-gray-800 w-80 h-full absolute right-0 p-6 rounded-lg shadow-lg">
+            <div class="flex justify-end mb-4">
+                <button id="close-menu-btn" class="text-white focus:outline-none" aria-label="Close Menu">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="block">
+                <ul class="space-y-4">
+                    <li><a href="#home" class="block text-lg text-white hover:text-black transition duration-300">Home</a></li>
+                    <li><a href="#about" class="block text-lg text-white hover:text-black transition duration-300">About Us</a></li>
+                    <li><a href="#services" class="block text-lg text-white hover:text-black transition duration-300">Services</a></li>
+                    <li><a href="#work" class="block text-lg text-white hover:text-black transition duration-300">Our Work</a></li>
+                    <li><a href="#contact" class="block text-lg text-white hover:text-black transition duration-300">Contact Us</a></li>
+                    <li>
+                        <a href="#contact" class="block bg-black hover:bg-gray-700 text-white px-5 py-3 rounded-full transition duration-300 text-lg">
+                            Get a Quote
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="home" class="text-center py-16">
+            <div class="slide-in-left">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4 text-gradient">Your Digital Growth Partner</h1>
+                <p class="text-gray-600 text-lg mb-8">
+                    We are a specialized digital marketing and solutions agency based in Egypt, empowering businesses across the MENA region with innovative strategies.
+                </p>
+                <img src="Digital marketing.png" alt="Digital Marketing Team" class="rounded-lg shadow-lg mx-auto mb-8">
+                <a href="#services" class="bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-full transition duration-300 text-lg scale-up">
+                    Explore Our Services
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="text-center py-16">
+             <div class="slide-in-right">
+                <h2 class="text-3xl font-semibold text-gray-900 mb-6">About Us</h2>
+                <p class="text-gray-600 text-lg mb-8">
+                    MenaVerse Online combines regional market insight with global best practices to help you succeed online.  We deliver measurable results for our clients using data-driven strategies across digital channels.
+                </p>
+                <img src="Digital marketing.png" alt="About Us" class="rounded-lg shadow-lg mx-auto mb-8">
+             </div>
+        </section>
+
+        <section id="services" class="text-center py-16">
+            <h2 class="text-3xl font-semibold text-gray-900 mb-12">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+                    <h3 class="text-2xl font-semibold text-black mb-4">SEO</h3>
+                    <p class="text-gray-600 text-lg mb-4">
+                        Boost your website's visibility and attract qualified leads with our strategic SEO techniques.
+                    </p>
+                    <img src="https://placehold.co/300x200/EEE/31343C" alt="SEO Service" class="rounded-lg shadow-md mx-auto mb-4">
+                    <a href="#contact" class="bg-gray-200 hover:bg-gray-300 text-gray-900 px-5 py-3 rounded-full transition duration-300 text-md">Learn More</a>
+                </div>
+                <div class="service-card bg-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+                    <h3 class="text-2xl font-semibold text-black mb-4">SMM</h3>
+                    <p class="text-gray-600 text-lg mb-4">
+                        Connect with your audience and build strong brand connections through our social media marketing expertise.
+                    </p>
+                    <img src="https://placehold.co/300x200/EEE/31343C" alt="SMM Service" class="rounded-lg shadow-md mx-auto mb-4">
+                     <a href="#contact" class="bg-gray-200 hover:bg-gray-300 text-gray-900 px-5 py-3 rounded-full transition duration-300 text-md">Learn More</a>
+                </div>
+                <div class="service-card bg-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+                    <h3 class="text-2xl font-semibold text-black mb-4">PPC</h3>
+                    <p class="text-gray-600 text-lg mb-4">
+                        Maximize your advertising budget and achieve a high return on investment with our targeted PPC strategies.
+                    </p>
+                    <img src="https://placehold.co/300x200/EEE/31343C" alt="PPC Service" class="rounded-lg shadow-md mx-auto mb-4">
+                    <a href="#contact" class="bg-gray-200 hover:bg-gray-300 text-gray-900 px-5 py-3 rounded-full transition duration-300 text-md">Learn More</a>
+                </div>
+                <div class="service-card bg-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+                    <h3 class="text-2xl font-semibold text-black mb-4">Digital Auditing</h3>
+                    <p class="text-gray-600 text-lg mb-4">
+                       Uncover hidden inefficiencies and growth opportunities with our comprehensive digital auditing process.
+                    </p>
+                    <img src="https://placehold.co/300x200/EEE/31343C" alt="Digital Auditing Service" class="rounded-lg shadow-md mx-auto mb-4">
+                    <a href="#contact" class="bg-gray-200 hover:bg-gray-300 text-gray-900 px-5 py-3 rounded-full transition duration-300 text-md">Learn More</a>
+                </div>
+                <div class="service-card bg-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+                    <h3 class="text-2xl font-semibold text-black mb-4">Media Production</h3>
+                    <p class="text-gray-600 text-lg mb-4">
+                        Elevate your brand with our professional video and photo shooting sessions, and events coverage.
+                    </p>
+                    <img src="https://placehold.co/300x200/EEE/31343C" alt="Media Production Service" class="rounded-lg shadow-md mx-auto mb-4">
+                    <a href="#contact" class="bg-gray-200 hover:bg-gray-300 text-gray-900 px-5 py-3 rounded-full transition duration-300 text-md">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="work" class="text-center py-16">
+            <h2 class="text-3xl font-semibold text-gray-900 mb-12">Client Successes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="client-success-card bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-green-600 mb-2">Etlaala.com</h3>
+                    <p class="text-gray-600 text-lg mb-4">Sales increased by 14% through combined SEO and PPC strategies.</p>
+                     <img src="https://placehold.co/300x150/EEE/31343C" alt="Etlaala Client Success" class="rounded-lg shadow-md mx-auto mb-4">
+                </div>
+                <div class="client-success-card bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-green-600 mb-2">AACMEedu.com</h3>
+                    <p class="text-gray-600 text-lg mb-4">Social media following grew by 24% thanks to targeted SMM campaigns.</p>
+                    <img src="https://placehold.co/300x150/EEE/31343C" alt="AACMEedu Client Success" class="rounded-lg shadow-md mx-auto mb-4">
+                </div>
+                <div class="client-success-card bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold text-green-600 mb-2">Chopwell.com</h3>
+                    <p class="text-gray-600 text-lg mb-4">Website traffic improved by 12% after a comprehensive digital audit.</p>
+                    <img src="https://placehold.co/300x150/EEE/31343C" alt="Chopwell Client Success" class="rounded-lg shadow-md mx-auto mb-4">
+                </div>
+            </div>
+        </section>
+
+        <section id="partners" class="text-center py-16">
+            <h2 class="text-3xl font-semibold text-gray-900 mb-12">Our Partners</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <img src="https://placehold.co/150x80/EEE/31343C" alt="Partner Logo 1" class="rounded-lg shadow-md mx-auto">
+                <img src="https://placehold.co/150x80/EEE/31343C" alt="Partner Logo 2" class="rounded-lg shadow-md mx-auto">
+                <img src="https://placehold.co/150x80/EEE/31343C" alt="Partner Logo 3" class="rounded-lg shadow-md mx-auto">
+                <img src="https://placehold.co/150x80/EEE/31343C" alt="Partner Logo 4" class="rounded-lg shadow-md mx-auto">
+                <img src="https://placehold.co/150x80/EEE/31343C" alt="Partner Logo 5" class="rounded-lg shadow-md mx-auto">
+            </div>
+        </section>
+
+        <section id="contact" class="text-center py-16">
+            <h2 class="text-3xl font-semibold text-gray-900 mb-12">Contact Us</h2>
+            <div class="bg-white rounded-lg shadow-md p-8 max-w-lg mx-auto">
+                <p class="text-gray-700 text-lg mb-4">Phone: +201558058813</p>
+                <p class="text-gray-700 text-lg mb-4">Website: <a href="www.menaverse.online" target="_blank" rel="noopener noreferrer" class="text-black hover:text-gray-800 transition duration-300">www.menaverse.online</a></p>
+                <p class="text-gray-700 text-lg mb-4">Email: contact@menaverse.online</p>
+                <p class="text-gray-700 text-lg mb-6">Address: Office location in Egypt (details available on request)</p>
+                 <img src="https://placehold.co/600x300/EEE/31343C" alt="Contact Us" class="rounded-lg shadow-lg mx-auto mb-8">
+                <button onclick="window.location.href='#contact'" class="bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-full transition duration-300 text-lg scale-up">
+                    Let's Talk
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 py-6 rounded-md">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            &copy; 2024 MenaVerse Online. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeMenuBtn = document.getElementById("close-menu-btn");
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle("hidden");
+        }
+
+        hamburgerBtn.addEventListener("click", toggleMobileMenu);
+        closeMenuBtn.addEventListener("click", toggleMobileMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener("click", toggleMobileMenu);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
+                toggleMobileMenu();
+            }
+        });
+
+        function updateActiveNavLink() {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', updateActiveNavLink);
+
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
